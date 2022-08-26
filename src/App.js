@@ -1,24 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Formulario from './components/Formulario';
+import Tabela from './components/Tabela';
+import { useEffect, useState } from 'react';
+import contatos from './models/Contatos';
 
 function App() {
+  const [listaContatos, setListaContatos] = useState([]);
+  const [contatoAlterar, setContatoAlterar] = useState({});
+  useEffect(() => {
+    setListaContatos(contatos);
+  }, {});
+
+  function handleRemover(index) {
+    setListaContatos([
+      ...listaContatos.slice(0, index),
+      ...listaContatos.slice(index + 1, listaContatos.length)
+    ]);
+  }
+
+  function handleAlterar(index) {
+    const contatoSelecionado = listaContatos[index];
+    setContatoAlterar(contatoSelecionado);
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>
+        <section id="tabela">
+          <Formulario
+            contatoAlterar={contatoAlterar}
+            listaContatos={listaContatos}
+            setListaContatos={setListaContatos}
+          />
+          <Tabela
+            listaContatos={listaContatos}
+            handleRemover={handleRemover}
+            handleAlterar={handleAlterar}
+          />
+        </section>
+      </main>
+    </>
   );
 }
 

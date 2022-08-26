@@ -1,0 +1,44 @@
+#minhaTabela {
+    font-family: Ubuntu;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    border-collapse: collapse;
+}
+
+#minhaTabela th {
+    background-color: rgb(13, 97, 122);
+    padding: 10px;
+    color: white;
+    font-weight: 100;
+}
+
+#minhaTabela td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#minhaTabela td {
+    padding: 5px;
+}
+
+#minhaTabela tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#minhaTabela tr:hover {
+    background-color: #ddd;
+}
+
+.remove-btn, .altera-btn {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-width: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.esconderLinha {
+    display: none;
+}
